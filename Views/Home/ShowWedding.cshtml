@@ -1,0 +1,27 @@
+@{ViewData["Title"] = "Wedding";}
+@model Wedding;
+<div class="container">
+  <div class="row">
+      <h1>@Model.Party's Wedding</h1>
+  </div>
+</div>
+<hr>
+<h2>@Model.DateofWedding.ToShortDateString()</h2>
+<div class="container"> 
+  <div class="row">
+    <div class="col-sm-1"></div>
+        <ul><u><h3>Guests:</h3></u>
+        <div class="col">
+      @foreach(RSVP rsvp in @Model.Guests) 
+      {
+        <li>@rsvp.Guest.FullName</li>
+      }  
+        </ul>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+  <div id="map"> <img src="../WeddingRings.png"> 
+</div>  

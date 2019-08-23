@@ -1,0 +1,160 @@
+    @foreach(var post in Model)
+    {
+        Vote lastVote = post.Votes.LastOrDefault();
+        string lastToVote = (lastVote == null) 
+            ? "N/A" 
+            : lastVote.Voter.FullName;
+        <tr>
+            <td>@post.Content</td>
+            <td>@post.Creator.FullName</td>
+            <td>@post.Votes.Count</td>
+            <td>@lastToVote</td>
+            <td>
+                @if(post.UserId != ViewBag.UserId)
+                {
+                    if(post.Votes.Any(v => v.UserId == ViewBag.UserId))
+                    {
+                        <a asp-action="Delete" asp-controller="Votes" asp-route-postId="@post.PostId">CANCEL</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Vote" asp-controller="Votes" asp-route-postId="@post.PostId" asp-route-isUpvote="@true">Upvote</a><span> |</span>
+                        <a asp-action="Vote" asp-controller="Votes" asp-route-postId="@post.PostId" asp-route-isUpvote="@false">Downbote</a>
+                    }
+                }
+                else
+                {
+                    <a asp-action="Delete" asp-controller="Posts" asp-route-postId="@post.PostId">DELETE</a>
+                }
+            </td>
+
+
+
+
+                    if(post.Votes.Any(v => v.UserId == ViewBag.UserId))
+                    {
+                        UNRSVP
+                    }
+                    else
+                    {
+                       RSVP
+                    }
+                }
+                else
+                {
+                   Cancel Wedding plans
+                }
+    
+
+
+
+
+
+
+
+route:
+Wedding wed = dbContext.Weddings.Include(Wed=>Wed.Guests)
+.ThenInclude(g=>g.Guest).FirstOrDefault(w=>w.WeddingId==WeddingId);
+
+Form:
+
+<ul><u><h3>Guests:</h3></u>
+<div class="col">
+@foreach(RSVP rsvp in @Model.Guests) 
+{
+<li>@rsvp.Guest.FullName</li>
+}  
+
+
+
+
+
+
+
+
+
+
+                        if(ViewBag.RSVP.ContainsKey(@wedding.WeddingId)
+                        {
+                        RSVPStatus=@ViewBag.RSVP
+
+                        }
+
+
+
+           var s = '<option value="-1">Select a Wedder</option>';  
+            for (var i = 0; i < data.length; i++) {  
+                s += '<option value="' + data[i].UserId + '">' + data[i].FirstName +  data[i].LasttName + '</option>';  
+                console.log(s);
+            }      
+
+
+
+            $("#Weddees").append("<option value='" + optionitem + "'>" + "</option>");
+            var names = new Array(data.substring(1,data.length-1))
+            console.log(names);  
+
+            var j= 0;
+            for (var i = 1; i < names.length-1; i++) { 
+                do
+                    j++
+                while (names.substring(i, j) != '"');
+                optionitem += '<option value="' + names.substring(i, j-1) + '</option>';
+                $("#Weddees").append("<option value='" + optionitem + "'>" + "</option>");
+                j++
+                i=j;
+            }        
+
+$("#myselect2").addOption(myOptions, false); 
+
+
+
+
+
+            var names = new Array(data.substring(1,data.length-1))
+            var j= 0;
+            var item;
+            for (var i = 1; i < names.length-1; i++) { 
+                do
+                    item+=names.substring(i, j);
+                    j++
+                while (names.substring(i, j) != '"');
+
+                optionitem += '<option value="' + item + '</option>';
+                alert(optionitem);
+                $("#Weddees")[0].options.add( new Option(item ,i) );
+                j++;
+                i=j;
+            }      
+            // var sel = $("#Weddees");
+            // sel.prepend("<option value='" +  "Hello" + "'>" + "</option>");
+                $("#Here").html(names);  
+
+
+
+
+
+
+
+
+    
+var ddl = $("#dropListBuilding");   
+for (k = 0; k < buildings.length; k++)
+   ddl.append("<option value='" + buildings[k]+ "'>" + buildings[k] + "</option>");
+
+    @{
+        foreach(var candidate in @ViewBag.UserList) {
+            <option>@candidate.ToString() </option>
+        }
+    } 
+ 
+ 
+            <!-- <form asp-action="Login" asp-controller="Home" method="post">
+                <span asp-validation-for="@Model.LoginDetail.Email"></span>
+                <label asp-for="@Model.LoginDetail.Email"></label><br>
+                <input asp-for="@Model.LoginDetail.Email">
+                <span asp-validation-for="@Model.LoginDetail.Password"></span>
+                <label asp-for="@Model.LoginDetail.Password"></label>
+                <input asp-for="@Model.LoginDetail.Password">
+                <input value="Login" type="submit">    
+            </form>         -->

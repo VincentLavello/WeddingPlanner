@@ -1,0 +1,50 @@
+@model List<Wedding>
+<div class="container">
+  <div class="row">
+      <h1>Welcome to the Wedding Planner <h4>
+  </div>
+   
+</div>
+<hr>
+
+<div id="outer">
+    <div id="clearit"></div>
+    <div >
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody class="table table-striped table-hover ">
+                @{ 
+                    @foreach(var wedding in @Model) {
+                        string id = @wedding.WeddingId.ToString();
+                        <tr>
+                            <td><a href="/ShowWedding/@id">@wedding.Party</a></td>
+                            <td>@wedding.DateofWedding</td>
+                            <td>@wedding.Guests.Count</td>
+                            @if (wedding.Planner_Id==ViewBag.UserId)
+                            {
+                            <td><a href="/CancelWedding/@id">Drop</a></td>
+                            }
+                            else if (wedding.Guests.Any(u=>u.UserId==ViewBag.UserId))
+                            {
+                                <td><a href="/UNRSVP/@id" >UN-RSVP</a></td>
+                            }
+                            else 
+                            {
+                                <td><a href="/RSVP/@id" >RSVP</a></td>
+                            }
+                        </tr>
+                    }
+                }
+            <tr><td colspan="4"><a href="/ViewNewWedding" id="NewWedding" type=button>New Wedding</a></td></tr>
+            </tbody>
+        </table>
+        </div> 
+    </div>          
+</div>

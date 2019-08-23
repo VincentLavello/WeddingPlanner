@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using WeddingPlanner.Models;
+@model LoginReg
+<div id="mainDiv" class="container jumbotron text-center">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+<div id="outer">
+    <h1 class="text-danger">Register (<a href="/#clearit">Login</a>)</h1>
+    <div class="b" id="inner">
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <div class="form-group">
+            <form asp-action="CreateUser" asp-controller="Home" method="post">
+                <br><label asp-for="@Model.NewUser.FirstName"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.NewUser.FirstName"></span>
+                <input asp-for="@Model.NewUser.FirstName">
+                <br><label asp-for="@Model.NewUser.LastName"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.NewUser.LastName"></span>
+                <input asp-for="@Model.NewUser.LastName">
+                <br><label asp-for="@Model.NewUser.Email"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.NewUser.Email"></span>
+                <input asp-for="@Model.NewUser.Email">
+                <span class="text-danger" asp-validation-for="@Model.NewUser.Password"></span>
+                <br><label asp-for="@Model.NewUser.Password"></label>
+                <br><input asp-for="@Model.NewUser.Password">
+                <br><label asp-for="@Model.NewUser.Confirm"></label>
+                <span class="text-danger" asp-validation-for="@Model.NewUser.Confirm"></span>
+                <br><input asp-for="@Model.NewUser.Confirm"><br>
+                <input value="Register" type="submit">    
+            </form>      
+            </div></td>
+        </tbody>
+    </table>        
+    </div>
+    <div id="clearit"></div>
+        <div class="t">
+        <table class="table table-bordered table-striped">
+            <tbody><td> 
+            @{
+                var num = ViewBag.Attempts==null ? 0 : @ViewBag.Attempts;
+            <h2>Login: @num attempts.</h2>
+            }
+            <form asp-action="Login" asp-controller="Home" method="post">
+                <span asp-validation-for="@Model.LoginDetail.Email"></span>
+                <label asp-for="@Model.LoginDetail.Email"></label><br>
+                <input asp-for="@Model.LoginDetail.Email">
+                <span asp-validation-for="@Model.LoginDetail.Password"></span>
+                <label asp-for="@Model.LoginDetail.Password"></label>
+                <input asp-for="@Model.LoginDetail.Password">
+                <input value="Login" type="submit">    
+            </form>        
+            </td>
+            </tbody>
+        </table>
+        </div> 
+</div>

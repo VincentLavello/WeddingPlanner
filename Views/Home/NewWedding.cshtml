@@ -1,0 +1,33 @@
+@model Wedding
+
+<div class="container">
+  <div class="row">
+      <h1>Schedule a Wedding</h1>
+  </div>
+</div>
+<hr>
+<div id="outer">
+    <div class="b" id="inner">
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <div class="form-group">
+            <form asp-action="NewWedding" asp-controller="Home" method="post">
+                <br><label asp-for="@Model.Bride"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.Bride"></span>
+                <input asp-for="@Model.Bride">
+                <br><label asp-for="@Model.Groom"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.Groom"></span>
+                <input asp-for="@Model.Groom">
+                <br><label asp-for="@Model.Address"></label><br>
+                <span class="text-danger" asp-validation-for="@Model.Address"></span>
+                <input asp-for="@Model.Address">
+                <span class="text-danger" asp-validation-for="@Model.DateofWedding"></span>
+                <br><label asp-for="@Model.DateofWedding"></label>
+                <br><input type="date" min=@DateTime.Now.ToString("mm/dd/yyyy") asp-for="@Model.DateofWedding">
+                <input value="Register" type="submit">    
+            </form>      
+            </div></td>
+        </tbody>
+    </table>        
+    </div>
+    <div id="clearit"></div>
